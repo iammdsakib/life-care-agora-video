@@ -1,0 +1,7 @@
+{
+  "/api, /events": {
+      "target": "http://webcollector-1.agora.io:6080",
+      "secure": false,
+      "logLevel": "debug"
+  }
+}

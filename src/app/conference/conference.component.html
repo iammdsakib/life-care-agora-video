@@ -1,0 +1,139 @@
+<section *ngIf="!joinedMeeting" class="mbr-section info3 cid-sTMFXgPb95 mbr-parallax-background" id="info3-g">
+  <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);">
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="media-container-column title col-12 col-md-10">
+        <h2 class="align-left mbr-bold mbr-white pb-3 mbr-fonts-style display-2">
+          Join an appointment</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="joinedMeeting" class="cid-sTPVV5IYro" id="image3-n">
+  <figure class="mbr-figure container">
+    <div class="image-block" style="width: 80%;">
+      <div class="remoteVideo">
+        <!-- <span *ngFor="let callId of streamRemoteCalls" [id]="callId"></span> -->
+        <span [id]="streamRemoteCalls[0]"></span>
+        <figcaption class="mbr-figure-caption mbr-figure-caption-over remote-fig">
+          <div *ngIf="streamRemoteCalls[0]"
+            class="container pt-2 mbr-white align-center mbr-fonts-style display-2 name">
+            {{'User (' + streamRemoteCalls[0]+')'}}
+          </div>
+          <div class="container pt-2 mbr-white align-center mbr-fonts-style display-7 notification">
+            <ng-container *ngTemplateOutlet="notification"></ng-container>
+          </div>
+          <div class="container pb-2 mbr-white align-center mbr-fonts-style display-7 options">
+            <ng-container *ngTemplateOutlet="menuOptions"></ng-container>
+          </div>
+        </figcaption>
+      </div>
+      <div class="localVideo">
+        <span [id]="localStreamId"></span>
+        <figcaption class="mbr-figure-caption mbr-figure-caption-over">
+          <div class="container pb-1 mbr-white align-center mbr-fonts-style display-7 local-name">
+            {{form.value.nameField}}
+          </div>
+        </figcaption>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section *ngIf="!joinedMeeting" class="mbr-section form3 cid-sTNjgaKc2w" id="form3-l">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div *ngIf="joinedMeeting===false && !this.notify.ongoingMeeting" class="title col-12 col-lg-8">
+        <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5 left-meet">
+          You have left the meeting. Want to join another meeting ?</h3>
+      </div>
+      <div *ngIf="this.notify.ongoingMeeting" class="title col-12 col-lg-8">
+        <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5 ongoing-meet">
+          This one-to-one meeting is already in progress, please contact the meeting owner. Want to join another meeting ?</h3>
+      </div>
+      <div class="title col-12 col-lg-8">
+        <h2 *ngIf="!joinCode" class="align-center pb-2 mbr-fonts-style display-2">
+          WITH APPOINTMENT CODE</h2>
+        <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5">
+          <ng-container *ngIf="joinCode">
+            Join the meeting by entering your name below.<br><br>
+            <strong *ngIf="meetingDetails">Meeting Title : {{meetingDetails}} </strong>
+          </ng-container>
+          <ng-container *ngIf="!joinCode">
+            Enter the meeting code shared with you to join. Or you can simply join a meeting directly via link shared
+            with you.
+          </ng-container>
+        </h3>
+      </div>
+    </div>
+    <div class="row py-2 justify-content-center">
+      <div class="col-12 col-lg-8 col-md-10" data-form-type="formoid">
+        <form [formGroup]="form" class="mbr-form" data-form-title="join Form">
+          <div class="mbr-subscribe input-group">
+            <ng-container *ngIf="!joinCode">
+              <input class="form-control" formControlName="joinCodeField" type="text" name="code" placeholder="Code *"
+                data-form-field="code" required="" id="code-form3-l">
+            </ng-container>
+            <input class="form-control" formControlName="nameField" type="text" name="name"
+              placeholder="Enter your Name" data-form-field="name" required="" id="name-form3-l">
+            <span class="input-group-btn">
+              <button (click)="joinMeeting()" type="button" class="btn btn-primary display-4">JOIN</button></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #menuOptions>
+  <section class="counters1 counters col-6 cid-sTQeDDUPma" id="counters1-o">
+    <div class="container">
+      <div class="media-container-row">
+        <div class="card p-1 align-center col-12 col-md-6 col-lg-4">
+          <div class="panel-item">
+            <div class="card-img">
+              <a (click)="toggleAudio()"><span class="mbr-iconfont mbri-music"></span></a>
+            </div>
+            <div class="card-text">
+              <h3 class="count pt-1 mbr-fonts-style display-4">
+                {{muteAudio ? 'Unmute Mic' : 'Mute Mic'}}
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="card p-1 align-center col-12 col-md-6 col-lg-4">
+          <div class="panel-item">
+            <div class="card-img">
+              <a (click)="toggleVideo()"><span class="mbr-iconfont mbri-video"></span></a>
+            </div>
+            <div class="card-text">
+              <h3 class="count pt-1 mbr-fonts-style display-4">
+                {{muteVideo ? 'Start Video' : 'Pause Video'}}
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="card p-1 align-center col-12 col-md-6 col-lg-4">
+          <div class="panel-item">
+            <div class="card-img">
+              <a (click)="leaveMeeting()"><span class="mbr-iconfont mbri-logout"></span></a>
+            </div>
+            <div class="card-text">
+              <h3 class="count pt-1 mbr-fonts-style display-4">
+                Leave Meeting</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #notification>
+  <ng-container *ngIf="notify.mediaDenied"> Please allow audio and video access from browser settings. <br>
+  </ng-container>
+  <ng-container *ngIf="notify.remoteLeft"> Remote user has left the meeting. <br></ng-container>
+  <ng-container *ngIf="notify.waiting"> Waiting for the other user to join the meeting. <br></ng-container>
+</ng-template>

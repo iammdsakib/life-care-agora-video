@@ -1,0 +1,102 @@
+<section class="mbr-section info3 cid-sTMFXgPb95 mbr-parallax-background" id="info3-g">
+  <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);">
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="media-container-column title col-12 col-md-10">
+        <h2 class="align-left mbr-bold mbr-white pb-3 mbr-fonts-style display-2">
+          Create an appointment</h2>
+        <h3 class="mbr-section-subtitle align-left mbr-light mbr-white pb-3 mbr-fonts-style display-5">
+          Lets start with creating a meeting or conference by using simple form.</h3>
+        <p class="mbr-text align-left mbr-white mbr-fonts-style display-7">
+          And share the meeting link with your connection. Do you already have a meeting link or code ? Please join a
+          meeting from top menu bar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mbr-section form1 cid-sTMGnOb5R6" id="form1-i" *ngIf="!form.value.code">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="title col-12 col-lg-8">
+        <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">Schedule a Meeting
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="media-container-column col-lg-8" data-form-type="formoid">
+
+        <form [formGroup]="form" class="mbr-form" data-form-title="meeting Form">
+          <div class="row row-sm-offset">
+            <div class="col-md-12 multi-horizontal" data-for="title">
+              <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="name-form1-i">Title or purpose of the
+                  appointment</label>
+                <input type="text" formControlName="title" class="form-control" name="title" data-form-field="Title"
+                  placeholder="My Appointment" required="true" id="title-form1-i">
+              </div>
+            </div>
+            <div class="col-md-4 multi-horizontal" data-for="Created By">
+              <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="Created-By-form1-i">Created By</label>
+                <input type="text" formControlName="creator" class="form-control" name="Created By" required="true"
+                  data-form-field="Created By" id="Created-By-form1-i">
+              </div>
+            </div>
+            <div class="col-md-4 multi-horizontal" data-for="time">
+              <div class="form-group">
+                <label class="form-control-label mbr-fonts-style display-7" for="time-form1-i">When (Date and Time)</label>
+                <input type="datetime-local" formControlName="time" class="form-control" name="time"
+                  data-form-field="Time" id="time-form1-i">
+              </div>
+            </div>
+          </div>
+          <span class="input-group-btn">
+            <button (click)="createMeeting()" type="button" class="btn btn-primary btn-form display-4">CREATE</button>
+          </span>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="mbr-section info1 cid-sTMVH3bMu5" id="info1-j" *ngIf="form.value.code">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="title col-12 col-lg-8">
+        <h3 class="mbr-section-subtitle align-center mbr-light pb-5 mbr-fonts-style display-5">
+          Congratulations! Your appointment is created successfully. Copy the link to share or use the code below to join
+          a meeting directly.
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center content-row">
+      <div class="media-container-column title col-12 col-lg-9 col-md-8">
+        <h3 class="mbr-section-subtitle align-left mbr-light pb-3 mbr-fonts-style display-5">
+          <p>
+            <strong>Title : </strong> {{form.value.title}} <br>
+            <ng-container *ngIf="form.value.creator">
+              <strong>Created By : </strong> {{form.value.creator}} <br>
+            </ng-container>
+            <strong>Date and Time : </strong> {{form.value.time}} <br>
+            <strong>Invite Link : </strong> <a [href]="getLink"> {{getLink}} </a> <br>
+          </p>
+        </h3>
+        <h2 class="align-left mbr-bold mbr-fonts-style display-2">Code : {{form.value.code}}</h2>
+        <p class="mbr-text align-left mbr-fonts-style display-7">
+          Share this meeting code with your connection to join a meeting from top menu bar directly.</p>
+      </div>
+      <div class="media-container-column col-12 col-lg-3 col-md-4">
+        <div (click)="copyToClipboard(getLink)" class="mbr-section-btn align-right py-4"><a
+            class="btn btn-primary display-4">{{copied ? 'COPIED': 'COPY LINK'}} </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

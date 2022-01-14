@@ -1,0 +1,120 @@
+.image-block {
+  position: relative;
+  overflow: hidden;
+}
+
+.localVideo {
+  width: 15vw;
+  height: 25vh;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 20px;
+  border: 1px solid lightgray;
+}
+
+.remoteVideo {
+  margin-top: 30px;
+  height: 90vh;
+  max-width: 100vw;
+  min-height: 250px;
+  background-color: darkslategray;
+}
+
+.left-meet {
+  color: #18a670;
+  font-weight: bold;
+}
+
+.ongoing-meet {
+  color: #d14a5c;
+  font-weight: bold;
+}
+
+.remote-fig {
+  position: unset;
+  .name {
+    top: 20px;
+    height: 60px;
+    margin: 20px 0;
+    text-shadow: 1px 1px #000000;
+  }
+  .notification {
+    top: 200px;
+    height: 60px;
+    margin: 10px;
+    text-shadow: 1px 1px #000000;
+  }
+  .options {
+    bottom: 10px;
+  }
+}
+
+.cid-sTQeDDUPma {
+  padding: 0px;
+  padding-top: 10px;
+  margin-left: -30px;
+  background: rgba(0, 0, 0, 0.1);
+
+  .container {
+    padding: 0;
+    margin: 0;
+  }
+
+  .mbr-iconfont {
+    font-size: 35px;
+    color: whitesmoke;
+  }
+
+  .panel-item {
+    background: transparent;
+  }
+}
+
+figcaption div {
+  position: unset;
+}
+
+figcaption > div {
+  position: absolute !important;
+}
+
+.local-name {
+  text-shadow: 1px 1px #000000;
+}
+
+@media only screen and (max-width: 768px) {
+  .mbr-subscribe > * {
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .cid-sTPVV5IYro {
+    padding-bottom: 15px;
+  }
+
+  .remoteVideo {
+    margin-top: 5px;
+  }
+
+  .localVideo {
+    width: 25vw;
+    height: 25vh;
+  }
+
+  .cid-sTQeDDUPma {
+    width: 125px;
+    margin-left: -15px;
+    margin-bottom: -18px;
+  }
+
+  .remote-fig {
+    .name {
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,117 @@
+<section class="menu cid-sTv62sk6oY" once="menu" id="menu1-0">
+  <nav
+    class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color"
+    [class.transparent]="this.router.url==='/home'">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+    <div class="menu-logo">
+      <div class="navbar-brand">
+        <span class="navbar-logo">
+          <a routerLink="/home">
+            <img src="assets/images/apple-touch-icon-57x57.png" alt="" title="" style="height: 3.8rem;">
+          </a>
+        </span>
+        <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-5" routerLink="/home">
+          Agora Meds &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</a></span>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+        <li class="nav-item">
+          <a class="nav-link link text-white display-4" routerLink="/home">
+            <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link text-white display-4" routerLink="/conference"><span
+              class="mbri-users mbr-iconfont mbr-iconfont-btn"></span>
+            Join an appointment</a>
+        </li>
+        <li class="nav-item"><a class="nav-link link text-white display-4" routerLink="/about"><span
+              class="mbri-bookmark mbr-iconfont mbr-iconfont-btn"></span>
+            About</a></li>
+      </ul>
+      <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4"
+          routerLink="/appointment"><span class="socicon socicon-wechat mbr-iconfont mbr-iconfont-btn"></span>
+          Create Appointment</a></div>
+    </div>
+  </nav>
+</section>
+
+<section [class.router]="this.router.url !== '/home'">
+  <router-outlet></router-outlet>
+</section>
+
+<section class="cid-sTva0KxKkb" id="footer1-5">
+  <div class="container">
+    <div class="media-container-row content text-white">
+      <div class="col-12 col-md-3">
+        <div class="media-wrap">
+          <a routerLink="/home">
+            <img src="assets/images/icon-logo-82x67.png" alt="" title="">
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-3 mbr-fonts-style display-7">
+        <h5 class="pb-3">
+          Address
+        </h5>
+        <p class="mbr-text">
+          1234 Street&nbsp;<br>Some City, AA 0000</p>
+      </div>
+      <div class="col-12 col-md-3 mbr-fonts-style display-7">
+        <h5 class="pb-3">
+          Contacts
+        </h5>
+        <p class="mbr-text">
+          Email: support@lifecare123.com
+          <br>Phone: +1 (0) 000 0000 001
+          <br>Fax: +1 (0) 000 0000 002
+        </p>
+      </div>
+      <div class="col-12 col-md-3 mbr-fonts-style display-7">
+        <h5 class="pb-3">
+          Links
+        </h5>
+        <p class="mbr-text"><a class="text-primary" routerLink="/appointment">Create Appointment</a>&nbsp;<br><a
+            class="text-primary" routerLink="/conference">Join an appointment</a>&nbsp;<br><a class="text-primary"
+            routerLink="/about">About&nbsp;</a></p>
+      </div>
+    </div>
+    <div class="footer-lower">
+      <div class="media-container-row">
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+      <div class="media-container-row mbr-white">
+        <div class="col-sm-6 copyright">
+          <p class="mbr-text mbr-fonts-style display-7">
+            © Copyright 2022 - All Rights Reserved
+          </p>
+        </div>
+        <div class="col-md-6">
+          <div class="social-list align-right">
+            <div class="soc-item">
+              <a routerLink="/home">
+                <span class="mbr-iconfont mbr-iconfont-social socicon-twitter socicon"></span>
+              </a>
+            </div>
+            <div class="soc-item">
+              <a routerLink="/home">
+                <span class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
